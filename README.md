@@ -39,7 +39,7 @@
   depending on your environment.
 
 #### **Run**
-  - From within the ScannerMan directory using CLI:
+  - From within the Live-IP-Scanner directory using CLI:
     ```console
     python main.py
     ```
