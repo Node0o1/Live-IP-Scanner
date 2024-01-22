@@ -12,7 +12,7 @@
 >The results of all responding IP's of currently live devices will be printed to the terminal after which you are promted to whether or not you want to save the results to a file.
 >This file can then be used to resolve host names for currently live devices within the LAN subnet which is being scanned (results very depending on security protections and permissions).
 >
->Ethernet connection to the host returns all responses. WIFI may be used but results may be partial.
+>Ethernet connection to the host returns all live responses. WIFI may be used but results may be partial.
 
 ### A few things to note:
 - Python 3.11+ is required to run
