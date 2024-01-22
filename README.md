@@ -1,2 +1,2 @@
 # Live-IP-Scanner
-Test mass connectivity of local network connections and external domain list using the ICMP - ping protocol.
+Test mass connectivity of LAN devices and/or domain list for internal or external domains using the ICMP - ping protocol.
