@@ -62,12 +62,17 @@ def local_ip_list() -> tuple:
         return (ip_list, subnet, gateway, ipv4)
     
 def get_local_live_ips() -> list:
+    class_A = '255.0.0.0'
+    class_B = '255.255.0.0'
+    class_C = '255.255.255.0'
+    class_D = '255.255.255.255'
     try:
         (proxy_list, subnet, gateway, ipv4)=local_ip_list()
     except Exception as e:
         raise e
     else:
-        if(not subnet == '255.255.255.0'):print(f'{YELLOW}Segmented submask found.{YELLOW}')
+        if(not((subnet == class_A) or (subnet == class_B) or (subnet == class_C) or (subnet == class_D ))):
+            print(f'{YELLOW}Segmented submask found.{YELLOW}')
         print(f'{YELLOW}{str.ljust("IPv4 Address: ",20,".")}{CYAN}{str.rjust(ipv4,15)}')
         print(f'{YELLOW}{str.ljust("Default Gateway: ",20,".")}{CYAN}{str.rjust(gateway,15)}')
         print(f'{YELLOW}{str.ljust("Subnet Mask: ",20,".")}{CYAN}{str.rjust(subnet,15)}')
