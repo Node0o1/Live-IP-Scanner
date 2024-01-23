@@ -2,7 +2,6 @@ from global_imports import *
 import pyfiglet
 
 def banner():
-    #LMFAO
     ascii_banner = pyfiglet.figlet_format('LIVE - IP SCANNER')
     print(f'{CYAN}{chr(0x0a)}{ascii_banner}')
     print(f'{YELLOW}'+str.center('by Node001 and JennyBlve',45),'\n')
