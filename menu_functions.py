@@ -1,53 +1,20 @@
 from global_imports import *
-import externals
-import menu_functions
+import pyfiglet
 
-def main():
-    proxy_list=list()
-    prxout = list()
-    try: menu_functions.banner()
-    except: print(f'{RED}Please make you sure have an internet connection and python is added to path and then pip install requirements.txt.{YELLOW}')
-    else:
-        scan_type = menu_functions.menu_selection()
-        match scan_type:
-            #http scan
-            case '1':
-                try: proxy_list = externals.import_file()
-                except: print('Please check spelling and file path.')
-                else:
-                    check_connectivity_func = externals.check_device_connectivity
-                    print(f'{GREEN}Scanning http ip/domains for connectivity.{chr(0x0a)}Please wait...{YELLOW}')  
-            #live local devices
-            case '2':
-                try: proxy_list = externals.get_local_live_ips()
-                except: print(f'{RED}IP info not found. Please be sure you are connected to a network.{YELLOW}')
-                else:
-                    check_connectivity_func = externals.check_device_connectivity
-                    print(f'\n{GREEN}Scanning local addresses ( {CYAN}{proxy_list[0]}{GREEN} - {CYAN}{proxy_list[-1]}{GREEN} ).{chr(0x0a)}Please wait...{YELLOW}')    
-            #live device host names
-            case '3':
-                try: proxy_list = externals.import_file()
-                except: print('Please check spelling and file path.')
-                else:
-                    check_connectivity_func = externals.local_ip_to_hostname
-                    print(f'\n{GREEN}Scanning live local IPs for host name.{chr(0x0a)}Please wait...{YELLOW}')  
-            case '4':
-                print(f'{GREEN}Goodbye.{RESET}')  
-                exit()
-            #exit
-            case _:
-                print(f'{RED}Selection error. Goodbye.{RESET}')
-                exit()
+def banner():
+    #LMFAO
+    ascii_banner = pyfiglet.figlet_format('LIVE - IP SCANNER')
+    print(f'{CYAN}{chr(0x0a)}{ascii_banner}')
+    print(f'{YELLOW}'+str.center('by Node001 and JennyBlve',45),'\n')
 
-        try: prxout = externals.process(proxy_list, check_connectivity_func)
-        except: None
-        else:
-            externals.print_prx(prxout)
-            user = str(input(f'\n{YELLOW}Do you want to write the output to a file.txt? (Y/N): {MAGENTA}'))
-            if(user.upper()=='Y'):
-                externals.write_prx(prxout)
-
-    finally: input(f'\n{YELLOW}Exiting Scanner\nPress {RED}[{CYAN}ENTER{RED}]{YELLOW} to exit: {RESET}')
-
-if __name__=='__main__':
-    main()
+def menu_selection() -> str:
+    print(f'\n{CYAN}Please choose a scan option ({YELLOW}1-5{CYAN})')
+    print(f'{RED}'+str.ljust('',45,'+'))
+    print(f'\n{CYAN}  '+str.ljust('Domain/Port ICMP Connectivity Scan',40,'.'),f'{YELLOW}1')
+    print(f'\n{CYAN}  '+str.ljust('Local Network Live ICMP Scan',40,'.'),f'{YELLOW}2')
+    print(f'\n{RED}*{CYAN} '+str.ljust('Resolve Found Network Device Names',40,'.'),f'{YELLOW}3')
+    print(f'\n{CYAN}  '+str.ljust('Exit Proxy IP Scanner',40,'.'),f'{YELLOW}4')
+    print(f'\n{RED}'+str.ljust('',45,'+'))
+    selection=str(input(f'{CYAN}Selection: {MAGENTA}'))
+    print(f'{YELLOW}')
+    return selection
