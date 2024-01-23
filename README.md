@@ -8,7 +8,7 @@
 >example:
 >127.0.0.1:1234
 >
->Auto detection of the host local ipv4 and subnet mask reguardless of virtual network adapters. Populates a range of local ip addresses from 0 - 255 to scan using the ping ICMP protocol on the LAN within the range of the host subnet.
+>Auto detection of the host local ipv4 and subnet mask reguardless of virtual network adapters. Populates a range of local ip addresses appropriate to Class C networks to scan for live devices using ping ICMP protocol on the LAN within the range of the host subnet.
 >The results of all responding IP's of currently live devices will be printed to the terminal after which you are promted to whether or not you want to save the results to a file.
 >This file can then be used to resolve host names for currently live devices within the LAN subnet which is being scanned (results very depending on security protections and permissions).
 >
