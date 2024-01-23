@@ -56,7 +56,21 @@ def local_ip_list() -> tuple:
                 raise Exception            
     except Exception as e:
         raise e
-    else:    
+    else:
+        ###identify network class and appropriate the ip scan list. 
+        ###overload scan function or accept additional parameter to specify the iterations of an exterior loop.
+        sub=subnet.split('.')
+        type = 'Class D'
+        if(sub[3] < 255):
+            type = 'Class C'
+            oct_iters = 1
+        if(sub[2] < 255):
+            type = 'Class B'
+            oct_iters = 2
+        if(sub[1] < 255):
+            type = 'Class A'
+            oct_iters = 3
+       
         octs=ipv4.split('.')
         [ip_list.append(str(f'{octs[0]}.{octs[1]}.{octs[2]}.{x}')) for x in range(0,256)]
         return (ip_list, subnet, gateway, ipv4)
