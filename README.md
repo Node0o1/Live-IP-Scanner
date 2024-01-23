@@ -1,7 +1,7 @@
 # Live-IP-Scanner
 #### *Type: Terminal Application*
 ## **Description:**
->Test mass connectivity of LAN devices and/or domain list for internal or external domains using the ICMP - ping protocol. Can be used to help map existing networks and trouble shoot rogue devices.
+>Test mass connectivity of LAN devices and/or domain list for internal or external domains using the ICMP protocol. Can be used to help map existing networks and trouble shoot rogue devices.
 >
 >To test a systems domain for connectivity with the ICMP protocol, provide a file of all the sub domains in the given environment. addresses must be seperated by a newline character and ports should be appended to the end of each address using the `:` colon.
 >
