@@ -57,23 +57,23 @@ def local_ip_list() -> tuple:
     except Exception as e:
         raise e
     else:
-        ###identify network class and appropriate the ip scan list. 
-        ###overload scan function or accept additional parameter to specify the iterations of an exterior loop.
-        sub=subnet.split('.')
-        type = 'Class D'
-        if(sub[3] < 255):
-            type = 'Class C'
-            oct_iters = 1
-        if(sub[2] < 255):
-            type = 'Class B'
-            oct_iters = 2
-        if(sub[1] < 255):
-            type = 'Class A'
-            oct_iters = 3
-       
         octs=ipv4.split('.')
-        [ip_list.append(str(f'{octs[0]}.{octs[1]}.{octs[2]}.{x}')) for x in range(0,256)]
-        return (ip_list, subnet, gateway, ipv4)
+        sub=subnet.split('.')
+       
+         #Need to accomodate subnetted address ranges for more focused scanning ranges.
+        if(int(sub[1]) < 255):
+            class_type = 'Class A'
+            [ip_list.append(str(f'{octs[0]}.{z}.{y}.{x}')) for x in range(0,256) for y in range(0,256) for z in range(0,256)]
+        elif(int(sub[2]) < 255):
+            class_type = 'Class B'
+            [ip_list.append(str(f'{octs[0]}.{octs[1]}.{y}.{x}')) for x in range(0,256) for y in range(0,256)]
+        elif(int(sub[3]) < 255):
+            class_type = 'Class C' 
+            [ip_list.append(str(f'{octs[0]}.{octs[1]}.{octs[2]}.{x}')) for x in range(0,256)]
+        else:
+            class_type='Class D'
+            ip_list=[None]
+        return (ip_list, subnet, gateway, ipv4, class_type)
     
 def get_local_live_ips() -> list:
     class_A = '255.0.0.0'
