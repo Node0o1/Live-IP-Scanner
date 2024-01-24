@@ -16,7 +16,7 @@
 
 ### A few things to note:
 - Still needs support for Linux local device name resolution.
-- Currently supports Class C networks. Working on support for class A, B, and C networks.
+- Currently supports Class C networks. Working to incorporate CIDR notations and subnet ip ranges.
 - Python 3.11+ is required to run.
 - Pip must be installed and Python should be added to Path.
 
