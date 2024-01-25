@@ -32,7 +32,7 @@
 - after downloading, use the CLI to navigate to the directory containing the requirements.txt file and run the following command:
   
   ```console
-  python -m pip install requirements.txt
+  python -m pip install -r requirements.txt
   ```
   or
   
