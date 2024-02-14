@@ -24,7 +24,7 @@
 #### **Download**
 - Using CLI, navigate to the folder you wish to download the application and run:
   ```console
-  git clone https://github.com/Node0o1/Live-IP-Scanner.git
+  git clone https://github.com/Node0o1/Local-IP-Scanner.git
   ```
 
 #### **setup**
@@ -41,7 +41,7 @@
   depending on your environment.
 
 #### **Run**
-  - From within the Live-IP-Scanner directory using CLI:
+  - From within the Local-IP-Scanner directory using CLI:
     ```console
     python main.py
     ```
