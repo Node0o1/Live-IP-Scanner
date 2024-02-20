@@ -1,5 +1,5 @@
 from global_imports import *
-import externals
+import utils
 import menu_functions
 
 def main():
@@ -12,24 +12,24 @@ def main():
         match scan_type:
             #http scan
             case '1':
-                try: proxy_list = externals.import_file()
+                try: proxy_list = utils.import_file()
                 except: print('Please check spelling and file path.')
                 else:
-                    check_connectivity_func = externals.check_device_connectivity
+                    check_connectivity_func = utils.check_device_connectivity
                     print(f'{GREEN}Scanning http ip/domains for connectivity.{chr(0x0a)}Please wait...{YELLOW}')  
             #live local devices
             case '2':
-                try: proxy_list = externals.get_local_live_ips()
+                try: proxy_list = utils.get_local_live_ips()
                 except: print(f'{RED}IP info not found. Please be sure you are connected to a network.{YELLOW}')
                 else:
-                    check_connectivity_func = externals.check_device_connectivity
+                    check_connectivity_func = utils.check_device_connectivity
                     print(f'\n{GREEN}Scanning local addresses ( {CYAN}{proxy_list[0]}{GREEN} - {CYAN}{proxy_list[-1]}{GREEN} ).{chr(0x0a)}Please wait...{YELLOW}')    
             #live device host names
             case '3':
-                try: proxy_list = externals.import_file()
+                try: proxy_list = utils.import_file()
                 except: print('Please check spelling and file path.')
                 else:
-                    check_connectivity_func = externals.local_ip_to_hostname
+                    check_connectivity_func = utils.local_ip_to_hostname
                     print(f'\n{GREEN}Scanning live local IPs for host name.{chr(0x0a)}Please wait...{YELLOW}')  
             case '4':
                 print(f'{GREEN}Goodbye.{RESET}')  
@@ -39,13 +39,13 @@ def main():
                 print(f'{RED}Selection error. Goodbye.{RESET}')
                 exit()
 
-        try: prxout = externals.process(proxy_list, check_connectivity_func)
+        try: prxout = utils.process(proxy_list, check_connectivity_func)
         except: None
         else:
             externals.print_prx(prxout)
             user = str(input(f'\n{YELLOW}Do you want to write the output to a file.txt? (Y/N): {MAGENTA}'))
             if(user.upper()=='Y'):
-                externals.write_prx(prxout)
+                utils.write_prx(prxout)
 
     finally: input(f'\n{YELLOW}Exiting Scanner\nPress {RED}[{CYAN}ENTER{RED}]{YELLOW} to exit: {RESET}')
 
