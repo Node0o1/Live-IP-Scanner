@@ -42,7 +42,7 @@ def main():
         try: prxout = utils.process(proxy_list, check_connectivity_func)
         except: None
         else:
-            externals.print_prx(prxout)
+            utils.print_prx(prxout)
             user = str(input(f'\n{YELLOW}Do you want to write the output to a file.txt? (Y/N): {MAGENTA}'))
             if(user.upper()=='Y'):
                 utils.write_prx(prxout)
